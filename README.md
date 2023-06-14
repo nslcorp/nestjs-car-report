@@ -10,47 +10,24 @@ interface {  // interface of any class object
 ```
 
 
+## Create Report feature
 
-```bash
-$ npm install
+```text
+1. Create a new Report.entity file with [price, make, model, year, lat, lng, mileage]
+2. Create Report.controller file with [createReport]
+- receive body as CreateReportDto
+- restrict access with AuthGuard for only signed-in users
+
+3. Create Report.service file with [createReport]
+- inject repository by using Report.entity for CRUD
+- implement createReport method and return created entity
 ```
 
-## Running the app
+### Enhancements
+Every user has a list of reports
 
-```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+```text
+- User.entity has OneToMany relationship with Report.entity
+- Report.entity has ManyToOne relationship with User.entity
+- Report.controller use @CurrentUser to get the current user and pass it to service
 ```
-
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
